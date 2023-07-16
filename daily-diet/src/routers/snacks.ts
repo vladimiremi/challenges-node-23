@@ -29,6 +29,36 @@ export async function snacks(app: FastifyInstance) {
     return res.status(201).send()
   })
 
+  app.put('/snack/:id', { preHandler: [authentication] }, async (req, res) => {
+    const createTransactionBodySchema = z.object({
+      name: z.string(),
+      description: z.string(),
+      isDiet: z.boolean(),
+    })
+
+    const getTransactionsParamsSchema = z.object({
+      id: z.string().uuid(),
+    })
+
+    const { name, description, isDiet } = createTransactionBodySchema.parse(
+      req.body,
+    )
+
+    const { id } = getTransactionsParamsSchema.parse(req.params)
+
+    const { id: userId } = req.user
+
+    await knex('snacks')
+      .update({
+        name,
+        description,
+        is_diet: isDiet,
+      })
+      .where({ id, user_id: userId })
+
+    return res.send()
+  })
+
   app.get('/snacks', { preHandler: [authentication] }, async (req, res) => {
     const { id } = req.user
 
