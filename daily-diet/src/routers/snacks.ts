@@ -59,6 +59,24 @@ export async function snacks(app: FastifyInstance) {
     return res.send()
   })
 
+  app.delete(
+    '/snack/:id',
+    { preHandler: [authentication] },
+    async (req, res) => {
+      const getTransactionsParamsSchema = z.object({
+        id: z.string().uuid(),
+      })
+
+      const { id } = getTransactionsParamsSchema.parse(req.params)
+
+      const { id: userId } = req.user
+
+      await knex('snacks').delete().where({ id, user_id: userId })
+
+      return res.send()
+    },
+  )
+
   app.get('/snacks', { preHandler: [authentication] }, async (req, res) => {
     const { id } = req.user
 
