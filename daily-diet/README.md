@@ -19,6 +19,6 @@
     - [ ] Quantidade total de refeições dentro da dieta
     - [ ] Quantidade total de refeições fora da dieta
     - [ ] Melhor sequência de refeições dentro da dieta
-- [ ] O usuário só pode visualizar, editar e apagar as refeições o qual ele criou
+- [x] O usuário só pode visualizar, editar e apagar as refeições o qual ele criou
 
 As instruções completas podem ser encontradas [aqui](https://efficient-sloth-d85.notion.site/Desafio-02-be7cdb37aaf74ba898bc6336427fa410)
