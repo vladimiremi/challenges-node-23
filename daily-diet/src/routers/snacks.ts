@@ -3,18 +3,17 @@ import { z } from 'zod'
 import { knex } from '../database'
 import { randomUUID } from 'node:crypto'
 import { authentication } from '../middlewares/authentication'
+import { AppError } from '../utils/errors'
 
 export async function snacks(app: FastifyInstance) {
   app.post('/snack', { preHandler: [authentication] }, async (req, res) => {
-    const createTransactionBodySchema = z.object({
+    const createBodySchema = z.object({
       name: z.string(),
       description: z.string(),
       isDiet: z.boolean(),
     })
 
-    const { name, description, isDiet } = createTransactionBodySchema.parse(
-      req.body,
-    )
+    const { name, description, isDiet } = createBodySchema.parse(req.body)
 
     const { id } = req.user
 
@@ -30,21 +29,19 @@ export async function snacks(app: FastifyInstance) {
   })
 
   app.put('/snack/:id', { preHandler: [authentication] }, async (req, res) => {
-    const createTransactionBodySchema = z.object({
+    const createBodySchema = z.object({
       name: z.string(),
       description: z.string(),
       isDiet: z.boolean(),
     })
 
-    const getTransactionsParamsSchema = z.object({
+    const getParamsSchema = z.object({
       id: z.string().uuid(),
     })
 
-    const { name, description, isDiet } = createTransactionBodySchema.parse(
-      req.body,
-    )
+    const { name, description, isDiet } = createBodySchema.parse(req.body)
 
-    const { id } = getTransactionsParamsSchema.parse(req.params)
+    const { id } = getParamsSchema.parse(req.params)
 
     const { id: userId } = req.user
 
@@ -63,11 +60,11 @@ export async function snacks(app: FastifyInstance) {
     '/snack/:id',
     { preHandler: [authentication] },
     async (req, res) => {
-      const getTransactionsParamsSchema = z.object({
+      const getParamsSchema = z.object({
         id: z.string().uuid(),
       })
 
-      const { id } = getTransactionsParamsSchema.parse(req.params)
+      const { id } = getParamsSchema.parse(req.params)
 
       const { id: userId } = req.user
 
@@ -83,6 +80,28 @@ export async function snacks(app: FastifyInstance) {
     const transactions = await knex('snacks').select().where({ user_id: id })
 
     return res.send(transactions)
+  })
+
+  app.get('/snacks/:id', { preHandler: [authentication] }, async (req, res) => {
+    const { id: userId } = req.user
+
+    const getParamsSchema = z.object({
+      id: z.string().uuid(),
+    })
+
+    const { id } = getParamsSchema.parse(req.params)
+
+    const snacks = await knex('snacks')
+      .select()
+      .where({ user_id: userId, id })
+      .first()
+
+    console.log('snacks')
+    if (!snacks) {
+      throw new AppError('Not found.', 402)
+    }
+
+    return res.send(snacks)
   })
 
   // app.get('/snacks/all', async (req, res) => {
