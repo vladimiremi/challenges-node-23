@@ -1,13 +1,4 @@
-import fastify from 'fastify'
-
-
-export const app = fastify()
-
-
-app.get('/hello', (req, res)=>{
-    res.send('Hello World!')
-})
-
+import { app } from "./app"
 
 app.listen({
     host:'0.0.0.0',
