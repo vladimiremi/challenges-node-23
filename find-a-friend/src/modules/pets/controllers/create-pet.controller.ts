@@ -1,6 +1,4 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { CreatePetUseCase } from "../usecases/create-pet.usecase";
-import { InMemoryPetRepository } from "../repositories/in-memory/in-memory-pet-repository";
 import { makeCreatePetUseCase } from "../usecases/factories/make-create-pre.usecase";
 import { z } from "zod";
 
