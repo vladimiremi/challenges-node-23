@@ -1,5 +1,5 @@
 import { randomUUID } from 'node:crypto'
-import { ICreatePet, PetsRepository } from '../pets-repository'
+import { ICreatePet, PetsRepository } from '../pets.repository'
 import { Pet } from '../../entities/pets.entity'
 
 export class InMemoryPetRepository implements PetsRepository {

@@ -1,7 +1,6 @@
-import { beforeAll, beforeEach, describe, expect, it } from 'vitest'
-import { PetsRepository } from '../repositories/pets-repository'
+import { beforeEach, describe, expect, it } from 'vitest'
 import { CreatePetUseCase } from './create-pet.usecase'
-import { InMemoryPetRepository } from '../repositories/in-memory/in-memory-pet-repository'
+import { InMemoryPetRepository } from '../repositories/in-memory/in-memory-pet.repository'
 
 let petRepository: InMemoryPetRepository
 let sut: CreatePetUseCase

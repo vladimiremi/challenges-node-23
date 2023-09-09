@@ -1,5 +1,5 @@
 import { Pet } from '../entities/pets.entity'
-import { PetsRepository } from '../repositories/pets-repository'
+import { PetsRepository } from '../repositories/pets.repository'
 
 interface ICreatePetUseCase {
   name: string
