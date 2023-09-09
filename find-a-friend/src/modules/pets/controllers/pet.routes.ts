@@ -1,7 +1,6 @@
-import { FastifyInstance } from "fastify";
-import { createPet } from "./create-pet.controller";
+import { FastifyInstance } from 'fastify'
+import { createPet } from './create-pet.controller'
 
-export async function petsRoutes(app: FastifyInstance){
-    app.post('/pets', createPet)
+export async function petsRoutes(app: FastifyInstance) {
+  app.post('/pets', createPet)
 }
-
