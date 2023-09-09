@@ -1,3 +1,4 @@
+import { Pet } from "../entities/pets.entity";
 import { PetsRepository } from "../repositories/pets-repository";
 
 interface ICreatePetUseCase {
@@ -11,7 +12,9 @@ interface ICreatePetUseCase {
 
 export class CreatePetUseCase {
     constructor(private petRepository: PetsRepository){}
-    execute(data: ICreatePetUseCase){
-        this.petRepository.create(data)
+    async execute(data: ICreatePetUseCase):Promise<Pet>{
+        const pet = await this.petRepository.create(data)
+        
+        return pet
     }
 }

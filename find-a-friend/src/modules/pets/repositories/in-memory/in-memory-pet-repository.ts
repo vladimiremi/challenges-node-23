@@ -4,7 +4,7 @@ import { Pet } from "../../entities/pets.entity";
 
 export class InMemoryPetRepository implements PetsRepository{
     public pets:Pet[] = []
-    async create(data: ICreatePet): Promise<void> {
+    async create(data: ICreatePet): Promise<Pet> {
 
         const pet:Pet = {
             id: randomUUID(),
@@ -17,6 +17,8 @@ export class InMemoryPetRepository implements PetsRepository{
         }
 
         this.pets.push(pet)
+
+        return pet
 
     }
 

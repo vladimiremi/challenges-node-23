@@ -1,3 +1,5 @@
+import { Pet } from "../entities/pets.entity";
+
 export interface ICreatePet {
     name: string, 
     about: string | null,
@@ -7,7 +9,6 @@ export interface ICreatePet {
     address: string,
 }
 
-
 export interface PetsRepository {
-    create(data:ICreatePet): Promise<void>
+    create(data:ICreatePet): Promise<Pet>
 }
