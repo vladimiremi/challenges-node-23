@@ -4,6 +4,11 @@ import { Pet } from '../../entities/pets.entity'
 
 export class InMemoryPetRepository implements PetsRepository {
   public pets: Pet[] = []
+
+  async findByCity(city: string): Promise<Pet[]> {
+    return this.pets.filter((pet) => pet.city === city)
+  }
+
   async create(data: ICreatePet): Promise<Pet> {
     const pet = {
       id: randomUUID(),

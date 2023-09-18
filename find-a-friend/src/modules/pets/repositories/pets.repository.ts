@@ -21,4 +21,5 @@ export interface ICreatePet {
 
 export interface PetsRepository {
   create(data: ICreatePet): Promise<Pet>
+  findByCity(city: string): Promise<Pet[]>
 }
