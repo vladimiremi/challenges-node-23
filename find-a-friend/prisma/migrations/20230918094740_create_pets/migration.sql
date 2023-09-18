@@ -5,6 +5,9 @@ CREATE TABLE "pets" (
     "about" TEXT NOT NULL,
     "size" INTEGER NOT NULL,
     "energy" INTEGER NOT NULL,
+    "independency" INTEGER NOT NULL,
+    "age" INTEGER NOT NULL,
+    "environment" INTEGER NOT NULL,
     "phone" TEXT NOT NULL,
     "address" TEXT NOT NULL,
 

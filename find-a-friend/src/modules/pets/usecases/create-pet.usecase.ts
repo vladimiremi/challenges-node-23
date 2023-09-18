@@ -3,11 +3,15 @@ import { PetsRepository } from '../repositories/pets.repository'
 
 interface ICreatePetUseCase {
   name: string
-  about: string | null
+  about: string
   size: number
   energy: number
+  independency: number
+  age: number
+  environment: number
   phone: string
   address: string
+  requisite: string
 }
 
 export class CreatePetUseCase {

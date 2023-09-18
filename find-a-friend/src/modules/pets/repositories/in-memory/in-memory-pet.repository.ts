@@ -13,6 +13,10 @@ export class InMemoryPetRepository implements PetsRepository {
       energy: data.energy,
       phone: data.phone,
       size: data.size,
+      age: data.age,
+      environment: data.environment,
+      independency: data.independency,
+      requisite: data.requisite,
     }
 
     this.pets.push(pet)

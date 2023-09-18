@@ -11,13 +11,17 @@ datasource db {
 }
 
 model Pet {
-  id      String @id @default(uuid())
-  name    String
-  about   String
-  size    Int
-  energy  Int
-  phone   String
-  address String
+  id           String @id @default(uuid())
+  name         String
+  about        String
+  size         Int
+  energy       Int
+  independency Int
+  requisite    String @default("")
+  age          Int
+  environment  Int
+  phone        String
+  address      String
 
   @@map("pets")
 }

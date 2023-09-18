@@ -7,6 +7,10 @@ export interface ICreatePet {
   energy: number
   phone: string
   address: string
+  requisite: string
+  independency: number
+  age: number
+  environment: number
 }
 
 export interface PetsRepository {

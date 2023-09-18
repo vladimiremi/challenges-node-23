@@ -11,15 +11,40 @@ export async function createPet(
     about: z.string(),
     size: z.number(),
     energy: z.number(),
+    independency: z.number(),
+    age: z.number(),
+    environment: z.number(),
+    requisite: z.string(),
     phone: z.string(),
     address: z.string(),
   })
 
-  const { name, about, address, energy, phone, size } =
-    createPetBodySchema.parse(request.body)
+  const {
+    name,
+    about,
+    address,
+    energy,
+    phone,
+    size,
+    age,
+    environment,
+    independency,
+    requisite,
+  } = createPetBodySchema.parse(request.body)
 
   const createPet = makeCreatePetUseCase()
 
-  createPet.execute({ name, about, address, energy, phone, size })
+  await createPet.execute({
+    name,
+    about,
+    address,
+    energy,
+    phone,
+    size,
+    age,
+    environment,
+    independency,
+    requisite,
+  })
   response.status(201).send()
 }
