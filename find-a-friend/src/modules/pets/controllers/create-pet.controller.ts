@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
-import { makeCreatePetUseCase } from '../usecases/factories/make-create-pre.usecase'
+import { makeCreatePetUseCase } from '../usecases/factories/make-create-pet.usecase'
 import { z } from 'zod'
 
 export async function createPet(
