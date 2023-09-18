@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from 'vitest'
-import { FetchPetsByCity } from './fetch-pets-by-city'
+import { FetchPetsByCity } from './fetch-pets-by-city.usecase'
 import { InMemoryPetRepository } from '../repositories/in-memory/in-memory-pet.repository'
 
 let petRepository: InMemoryPetRepository
