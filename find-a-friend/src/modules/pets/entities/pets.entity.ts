@@ -9,5 +9,11 @@ export interface Pet {
   requisite: string
   environment: number
   phone: string
-  address: string
+  // address
+  street: string | null
+  number: string | null
+  state: string | null
+  cep: string | null
+  neighborhood: string | null
+  city: string | null
 }

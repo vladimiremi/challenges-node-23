@@ -5,11 +5,10 @@ import { Pet } from '../../entities/pets.entity'
 export class InMemoryPetRepository implements PetsRepository {
   public pets: Pet[] = []
   async create(data: ICreatePet): Promise<Pet> {
-    const pet: Pet = {
+    const pet = {
       id: randomUUID(),
       name: data.name,
       about: data.about,
-      address: data.address,
       energy: data.energy,
       phone: data.phone,
       size: data.size,
@@ -17,6 +16,12 @@ export class InMemoryPetRepository implements PetsRepository {
       environment: data.environment,
       independency: data.independency,
       requisite: data.requisite,
+      cep: data.cep,
+      city: data.city,
+      neighborhood: data.neighborhood,
+      number: data.number,
+      state: data.state,
+      street: data.street,
     }
 
     this.pets.push(pet)

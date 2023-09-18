@@ -6,11 +6,17 @@ export interface ICreatePet {
   size: number
   energy: number
   phone: string
-  address: string
   requisite: string
   independency: number
   age: number
   environment: number
+  // address
+  street: string
+  number: string
+  state: string
+  cep: string
+  neighborhood: string
+  city: string
 }
 
 export interface PetsRepository {

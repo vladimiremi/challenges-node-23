@@ -14,11 +14,20 @@ describe('Create a Pet', () => {
   it('Should be able create a Pet', async () => {
     const pet = await sut.execute({
       about: 'teste',
-      address: 'teste',
       energy: 5,
-      name: 'Vladimir',
+      name: 'Kilate',
       phone: '86981266700',
       size: 3,
+      age: 2,
+      environment: 2,
+      independency: 1,
+      requisite: 'Requisite Teste',
+      street: 'Povoado Caldeirão',
+      number: '164',
+      state: 'PI',
+      cep: '64333000',
+      neighborhood: 'Zona Rural',
+      city: 'Assunção do Piauí',
     })
 
     expect(pet.id).toEqual(expect.any(String))

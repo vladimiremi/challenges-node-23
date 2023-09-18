@@ -10,8 +10,14 @@ interface ICreatePetUseCase {
   age: number
   environment: number
   phone: string
-  address: string
   requisite: string
+  // address
+  street: string
+  number: string
+  state: string
+  cep: string
+  neighborhood: string
+  city: string
 }
 
 export class CreatePetUseCase {

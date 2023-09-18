@@ -16,13 +16,17 @@ export async function createPet(
     environment: z.number(),
     requisite: z.string(),
     phone: z.string(),
-    address: z.string(),
+    street: z.string(),
+    number: z.string(),
+    state: z.string(),
+    cep: z.string(),
+    neighborhood: z.string(),
+    city: z.string(),
   })
 
   const {
     name,
     about,
-    address,
     energy,
     phone,
     size,
@@ -30,6 +34,13 @@ export async function createPet(
     environment,
     independency,
     requisite,
+    // address
+    cep,
+    city,
+    neighborhood,
+    number,
+    state,
+    street,
   } = createPetBodySchema.parse(request.body)
 
   const createPet = makeCreatePetUseCase()
@@ -37,7 +48,6 @@ export async function createPet(
   await createPet.execute({
     name,
     about,
-    address,
     energy,
     phone,
     size,
@@ -45,6 +55,12 @@ export async function createPet(
     environment,
     independency,
     requisite,
+    cep,
+    city,
+    neighborhood,
+    number,
+    state,
+    street,
   })
   response.status(201).send()
 }

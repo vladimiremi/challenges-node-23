@@ -21,7 +21,14 @@ model Pet {
   age          Int
   environment  Int
   phone        String
-  address      String
+
+  // address
+  street       String?
+  number       String?
+  state        String? @db.VarChar(2)
+  cep          String?
+  neighborhood String?
+  city         String?
 
   @@map("pets")
 }
