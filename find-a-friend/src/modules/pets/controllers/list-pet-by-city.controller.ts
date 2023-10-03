@@ -8,14 +8,20 @@ export async function listPetByCityController(
 ) {
   const querySchema = z.object({
     page: z.coerce.number().min(1).default(1),
-    city: z.string(),
+    query: z.string(),
   })
 
-  const { city } = querySchema.parse(request.query)
+  const result = querySchema.safeParse(request.query)
+  if (!result.success) {
+    console.log(result.error)
+    throw new Error(
+      `${result.error.errors[0].path[0]} ${result.error.errors[0].message}`,
+    )
+  }
 
   const listPetByCity = makeFetchPetsByCityUseCase()
 
-  const pets = await listPetByCity.execute(city)
+  const pets = await listPetByCity.execute(result.data.query)
 
   return reply.status(200).send({
     pets,

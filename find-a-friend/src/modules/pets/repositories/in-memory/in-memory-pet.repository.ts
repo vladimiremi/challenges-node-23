@@ -9,6 +9,15 @@ export class InMemoryPetRepository implements PetsRepository {
     return this.pets.filter((pet) => pet.city === city)
   }
 
+  async find(query: string): Promise<Pet[]> {
+    return await this.pets.filter(
+      (pet) =>
+        pet.city === query ||
+        pet.name === query ||
+        String(pet.energy) === query,
+    )
+  }
+
   async create(data: ICreatePet): Promise<Pet> {
     const pet = {
       id: randomUUID(),
